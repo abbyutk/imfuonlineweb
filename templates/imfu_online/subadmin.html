@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body_block %}
+    {% include 'nav.html' %}
+    {% include 'side.html' %}
+    <div id="content">
+        <div id="content-header">
+          <div id="breadcrumb"> <a href="{% url 'imfu_online:home' %}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="tip-bottom current ">Sub Admin</a><a href="{% url 'imfu_online:add_subadmin' %}">Add Sub Admin</a></div>
+        </div>
+        <div class="container-fluid">
+          <hr>
+          <div class="row-fluid">
+            <div class="span12">
+              <div class="widget-box">
+                <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+                  <h5><a style="color:green;" href="{% url 'imfu_online:add_subadmin' %}">Add Sub Admin</a></h5>
+                </div>
+                <div class="widget-content nopadding">
+                  <table class="table table-bordered data-table">
+                    <thead>
+                      <tr>
+                        <th>S. No.</th>
+                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Contect</th>
+                        <th>Email</th>
+                        <th>State</th>
+                        <th>City</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for i in subadmin %}
+                      <tr class="gradeA">
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.user.username }}</td>
+                        <td>{{ i.user.first_name }}</td>
+                        <td>{{ i.contect }}</td>
+                        <td>{{ i.user.email }}</td>
+                        <td>{{ i.state }}</td>
+                        <td>{{ i.city }}</td>
+                        <td><a class="btn btn-success" href="{% url 'imfu_online:update_subadmin' pk=i.pk %}">Update</a> <a class="btn btn-danger" href="{% url 'imfu_online:remove_subadmin' pk=i.user.pk %}">Remove</a> </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Footer-part-->
+      <div class="row-fluid">
+        <div id="footer" class="span12"> 2020 &copy;<a href=""></a> </div>
+      </div>
+      <!--end-Footer-part-->
+      <script src="{% static '/js/jquery.min.js' %}"></script> 
+      <script src="{% static '/js/jquery.ui.custom.js' %}"></script> 
+      <script src="{% static '/js/bootstrap.min.js' %}"></script> 
+      <script src="{% static '/js/jquery.uniform.js' %}"></script> 
+      <script src="{% static '/js/select2.min.js' %}"></script> 
+      <script src="{% static '/js/jquery.dataTables.min.js' %}"></script> 
+      <script src="{% static '/js/matrix.js' %}"></script> 
+      <script src="{% static '/js/matrix.tables.js' %}"></script>    
+{% endblock %}

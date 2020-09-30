@@ -1,0 +1,42 @@
+from django.urls import path
+from imfu_online import views
+
+app_name = "imfu_online"
+
+urlpatterns = [
+    path('home/',views.home,name="home"),
+    path('product/',views.product,name="product"),
+    path('yourproduct/<int:pk>/',views.yourproduct,name="yourproduct"),
+    path('product/add/<int:pk>/',views.add_product,name="add_product"),
+    path('product/remove/<int:pk>/',views.remove_product,name="remove_product"),
+    path('product/update/<int:pk>',views.update_product,name="update_product"),
+    path('brand/',views.brand,name="brand"),
+    path('brand/add',views.add_brand,name="add_brand"),
+    path('remove_brand/<int:pk>/',views.remove_brand,name="remove_brand"),
+    path('category/',views.category,name="category"),
+    path("category/add/",views.add_category,name="add_category"),
+    path('category/remove/<int:pk>/',views.remove_category,name="remove_category"),
+    path('subcategory/',views.subcategory,name="subcategory"),
+    path('subcategory/add/',views.add_subcategory,name="add_subcategory"),
+    path('subcategory/remove/<int:pk>/',views.remove_subcategory,name="remove_subcategory"),
+    path('subadmin/',views.subadmin,name="subadmin"),
+    path('subadmin/add/',views.add_subadmin,name="add_subadmin"),
+    path('subadmin/remove/<int:pk>/',views.remove_subadmin,name="remove_subadmin"),
+    path('subadmin/update/<int:pk>/',views.update_subadmin,name="update_subadmin"),
+    path('user/',views.user,name="user"),
+    path('vendor/',views.vendor,name="vendor"),
+    path('vendor/add/',views.add_vendor,name="add_vendor"),
+    path('vendor/remove/<int:pk>/',views.remove_vendor,name="remove_vendor"),
+    path('vendor/update/<int:pk>/',views.update_vendor,name="update_vendor"),
+    path('order/',views.order,name="order"),
+    path('oredr/new/',views.neworder,name="neworder"),
+    path('oredr/all/',views.allorder,name="allorder"),
+    path('deliveryboy/',views.deliveryboy,name="deliveryboy"),
+    path('deliveryboy/add/',views.add_deliveryboy,name="add_deliveryboy"),
+    path('deliveryboy/remove/<int:pk>/',views.remove_deliveryboy,name="remove_deliveryboy"),
+    path('deliveryboy/update/<int:pk>/',views.update_deliverboy,name="update_deliveryboy"),
+    path('invoice/',views.invoice,name="invoice"),
+    path('stock/',views.stock,name="stock"),
+    path('report/',views.report,name="report"),
+    path('logout/',views.user_logout,name="logout"),
+]

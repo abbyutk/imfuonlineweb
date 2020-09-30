@@ -1,0 +1,39 @@
+<!--sidebar-menu-->
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+  <ul>
+    <li class="active"><a href="{% url 'imfu_online:home'  %}"><i class="icon icon-home"></i> <span
+          style="font-size:15px">Home</span></a> </li>
+    <li><a href="{% url 'imfu_online:product' %}"><i class="icon icon-pencil"></i> <span
+          style="font-size:15px">Product</span></a></li>
+    <li><a href="{% url 'imfu_online:brand' %}"><i class="icon icon-th"></i> <span style="font-size:15px">Brand /
+          Category </span></a></li>
+    {% if user.is_superuser %}
+    <li><a href="{% url 'imfu_online:subadmin' %}"><i class="icon icon-th"></i> <span style="font-size:15px">Sub
+          Admin</span></a></li>
+    {% endif %}
+    <li><a href="{% url 'imfu_online:user' %}"><i class="icon icon-fullscreen"></i> <span
+          style="font-size:15px">Users</span></a></li>
+    {% if user.is_superuser or user.is_staff %}
+    <li><a href="{% url 'imfu_online:vendor' %}"><i class="icon icon-th-list"></i> <span
+          style="font-size:15px">Vendor</span> <span class="label label-important"></span></a></li>
+    {% endif %}
+    <li><a href="{% url 'imfu_online:order' %}"><i class="icon icon-th-list"></i> <span
+          style="font-size:15px">Orders</span></a></li>
+    <li><a href="{% url 'imfu_online:neworder' %}"><i class="icon icon-th-list"></i> <span
+            style="font-size:15px">New Orders</span></a></li>
+    <li><a href="{% url 'imfu_online:allorder' %}"><i class="icon icon-th-list"></i> <span
+                  style="font-size:15px">All Orders</span></a></li>
+    <li><a href="{% url 'imfu_online:deliveryboy' %}"><i class="icon icon-th-list"></i> <span
+          style="font-size:15px">Team</span> </a></li>
+    <li><a href="{% url 'imfu_online:invoice' %}"><i class="icon icon-th-list"></i> <span
+          style="font-size:15px">Invoices</span></a></li>
+    <li><a href="{% url 'imfu_online:stock' %}"><i class="icon icon-th-list"></i> <span
+          style="font-size:15px">Stock</span></a></li>
+    {% if user.is_superuser %}
+    <li><a href="{% url 'imfu_online:report' %}"><i class="icon icon-th-list"></i> <span
+          style="font-size:15px">Reports</span></a>
+      {% endif %}
+    </li>
+  </ul>
+</div>
+<!--sidebar-menu-->

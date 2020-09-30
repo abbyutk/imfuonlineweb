@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body_block %}
+    {% include 'nav.html' %}
+    {% include 'side.html' %}
+    <div id="content">
+        <div id="content-header">
+          <div id="breadcrumb"> <a href="{% url 'imfu_online:home' %}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{% url 'imfu_online:product' %}" class="tip-bottom">Product</a> <a href="#" class="current">Update Product</a> </div>
+          <h1>Update Product</h1>
+        </div>
+        <div class="container-fluid">
+          <hr>
+          <div class="row-fluid">
+            <div class="span12">
+              <div class="widget-box">
+                <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+                  <h5>Update Product</h5>
+                </div>
+                <div class="widget-content nopadding">
+                  <form action="#" method="POST" class="form-horizontal">
+                    {% csrf_token %}
+                    <div class="control-group">
+                      <label class="control-label">Titel :</label>
+                      <div class="controls">
+                        <input value="{{ product.title }}" type="text" name="title" id="" class="span11" placeholder="Title">
+                      </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Code :</label>
+                        <div class="controls">
+                          <input value="{{ product.code }}" type="text" name="code" id="" class="span11" placeholder="Code">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Name :</label>
+                        <div class="controls">
+                          <input value="{{ product.name }}" type="text" name="name" id="" class="span11" placeholder="Name">
+                        </div>  
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Category :</label>
+                        <div class="controls">
+                          <select class="span11" name="category" id="">
+                            <option value="{{ product.category.pk }}">{{ product.category }}</option>
+                            {% for i in category %}
+                                <option value="{{ product.category.pk }}">{{ product.category }}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Sub Category :</label>
+                        <div class="controls">
+                          <select class="span11" name="subcategory" id="">
+                            <option value="{{ product.subcategory.pk }}">{{ product.subcategory}}</option>
+                            {% for i in subcategory %}
+                              <option value="{{ i.pk }}">{{ i.name }}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label">Type :</label>
+                      <div class="controls">
+                        <select class="span11" name="type" id="">
+                          <option value="{{ product.type }}">{{ product.type }}</option>
+                          <option value="liquid">liquid</option>
+                          <option value="bottel">bottel</option>
+                          <option value="tablet">tablet</option>
+                        </select>
+                      </div>
+                  </div>
+                    <div class="control-group">
+                      <label class="control-label">Capacity :</label>
+                      <div class="controls">
+                        <input value="{{ product.capacity }}" type="number" name="capacity" id="" class="span11" placeholder="Capacity" >
+                        <span class="help-block">only if product is liquid !</span> </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Brand :</label>
+                        <div class="controls">
+                          <select class="span11" name="brand" id="">
+                            <option value="{{ product.brand.pk }}">{{ product.brand }}</option>
+                            {% for i in brand %}
+                              <option value="{{ i.pk }}">{{ i.name }}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label">Capacity :</label>
+                      <div class="controls">
+                        <input value="{{ product.expdate }}" type="date" name="expdate" id="" class="span11">
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Quantity :</label>
+                        <div class="controls">
+                          <input value="{{ product.quantity }}" class="span11" type="number" name="quantity" id="" placeholder="Quantity">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">PTR :</label>
+                        <div class="controls">
+                          <input value="{{ product.ptr }}" class="span11" type="number" name="ptr" id="" placeholder="PTR">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">MRP :</label>
+                        <div class="controls">
+                          <input value="{{ product.mrp }}" class="span11" type="number" name="mrp" id="" placeholder="MRP">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Offer / Scheme :</label>
+                        <div class="controls">
+                          <input value="{{ product.buy }}" class="span11" type="number" name="buy" id="" placeholder="Buy Product">
+                        </div>
+                        <div class="controls">
+                          <input value="{{ product.get }}" class="span11" type="number" name="get" id="" placeholder="Get Product Free">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label">Composition / mixture :</label>
+                      <div class="controls">
+                        <input value="{{ product.composition }}" type="text" name="composition" id="" class="span11">
+                      </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">Key :</label>
+                    <div class="controls">
+                      <select class="span11" name="key" id="">
+                        <option value="{{ product.key }}">{{ product.key }}</option>
+                        <option value="generic">generic</option>
+                        <option value="company">company</option>
+                      </select>
+                    </div>
+                </div>
+                    <div class="form-actions">
+                      <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+      <div class="row-fluid">
+        <div id="footer" class="span12"> 2020 &copy;<a href=""></a> </div>
+      </div>
+      <script src="{% static '/js/jquery.min.js' %}"></script> 
+      <script src="{% static '/js/jquery.ui.custom.js' %}"></script> 
+      <script src="{% static '/js/bootstrap.min.js' %}"></script> 
+      <script src="{% static '/js/jquery.uniform.js' %}"></script> 
+      <script src="{% static '/js/select2.min.js' %}"></script> 
+      <script src="{% static '/js/jquery.dataTables.min.js' %}"></script> 
+      <script src="{% static '/js/matrix.js' %}"></script> 
+      <script src="{% static '/js/matrix.tables.js' %}"></script>    
+{% endblock %}

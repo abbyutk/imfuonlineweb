@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body_block %}
+    {% include 'nav.html' %}
+    {% include 'side.html' %}
+    <div id="content">
+        <div id="content-header">
+          <div id="breadcrumb"> <a href="{% url 'imfu_online:home' %}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{% url 'imfu_online:brand' %}" class="tip-bottom">Brand</a> <a href="#" class="current">Add Brand</a> </div>
+          <h1>Add Brand</h1>
+        </div>
+        <div class="container-fluid">
+          <hr>
+          <div class="row-fluid">
+            <div class="span12">
+              <div class="widget-box">
+                <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+                  <h5>Brand</h5>
+                </div>
+                <div class="widget-content nopadding">
+                  <form action="#" method="POST" class="form-horizontal">
+                    {% csrf_token %}
+                    <div class="control-group">
+                      <label class="control-label">Brand :</label>
+                      <div class="controls">
+                        <input type="text" name="brand" id="" class="span6">
+                      </div>
+                    </div>
+                    <div class="form-actions">
+                      <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+      <div class="row-fluid">
+        <div id="footer" class="span12"> 2020 &copy;<a href=""></a> </div>
+      </div>
+      <script src="{% static '/js/jquery.min.js' %}"></script> 
+      <script src="{% static '/js/jquery.ui.custom.js' %}"></script> 
+      <script src="{% static '/js/bootstrap.min.js' %}"></script> 
+      <script src="{% static '/js/jquery.uniform.js' %}"></script> 
+      <script src="{% static '/js/select2.min.js' %}"></script> 
+      <script src="{% static '/js/jquery.dataTables.min.js' %}"></script> 
+      <script src="{% static '/js/matrix.js' %}"></script> 
+      <script src="{% static '/js/matrix.tables.js' %}"></script>    
+{% endblock %}

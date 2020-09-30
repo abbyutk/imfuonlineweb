@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body_block %}
+    {% include 'nav.html' %}
+    {% include 'side.html' %}
+    <div id="content">
+        <div id="content-header">
+          <div id="breadcrumb"> <a href="{% url 'imfu_online:home' %}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="tip-bottom current ">Vendor</a> <a href="{% url 'imfu_online:add_vendor' %}" class="tip-bottom">Add Vendor</a> </div>
+        </div>
+        <div class="container-fluid">
+          <hr>
+          <div class="row-fluid">
+            <div class="span12">
+              <div class="widget-box">
+                <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+                  <h5><a style="color:green;" href="{% url 'imfu_online:add_vendor' %}">Add Vendor</a></h5>
+                </div>
+                <div class="widget-content nopadding">
+                  <table class="table table-bordered data-table">
+                    <thead>
+                      <tr>
+                        <th>S. No.</th>
+                        <th>Username</th>
+                        <th>Vendor Name</th>
+                        <th>Email</th>
+                        <th>Contect</th>
+                        <th>Company</th>
+                        <th>State</th>
+                        <th>City</th>
+                        <th>Zone</th>
+                        {% if user.is_superuser %}
+                        <th>Action</th>
+                        {% endif %}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for i in vendor %}
+                      <tr class="gradeA">
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.user.username }}</td>
+                        <td>{{ i.user.first_name }}</td>
+                        <td>{{ i.user.email }}</td>
+                        <td>{{ i.contect }}</td>
+                        <td>{{ i.company }}</td>
+                        <td>{{ i.state }}</td>
+                        <td>{{ i.city }}</td>
+                        <td>{{ i.zone }}</td>
+                        {% if user.is_superuser %}
+                        <td><a class="btn btn-success" href="{% url 'imfu_online:update_vendor' pk=i.pk %}">Update</a> <a class="btn btn-danger" href="{% url 'imfu_online:remove_vendor' pk=i.user.pk  %}">Remove</a> </td>
+                        {% endif %}
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Footer-part-->
+      <div class="row-fluid">
+        <div id="footer" class="span12"> 2020 &copy;<a href=""></a> </div>
+      </div>
+      <!--end-Footer-part-->
+      <script src="{% static '/js/jquery.min.js' %}"></script> 
+      <script src="{% static '/js/jquery.ui.custom.js' %}"></script> 
+      <script src="{% static '/js/bootstrap.min.js' %}"></script> 
+      <script src="{% static '/js/jquery.uniform.js' %}"></script> 
+      <script src="{% static '/js/select2.min.js' %}"></script> 
+      <script src="{% static '/js/jquery.dataTables.min.js' %}"></script> 
+      <script src="{% static '/js/matrix.js' %}"></script> 
+      <script src="{% static '/js/matrix.tables.js' %}"></script>    
+{% endblock %}

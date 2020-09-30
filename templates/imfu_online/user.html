@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body_block %}
+    {% include 'nav.html' %}
+    {% include 'side.html' %}
+    <div id="content">
+        <div id="content-header">
+          <div id="breadcrumb"> <a href="{% url 'imfu_online:home' %}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="tip-bottom">User</a></div>
+        </div>
+        <div class="container-fluid">
+          <hr>
+          <div class="row-fluid">
+            <div class="span12">
+              <div class="widget-box">
+                <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+                  <h5><a style="color:green;" href="">User</a></h5>
+                </div>
+                <div class="widget-content nopadding">
+                  <table class="table table-bordered data-table">
+                    <thead>
+                      <tr>
+                        <th>S. No.</th>
+                        <th>Name</th>
+                        <th>Contect</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Password</th>
+                        {% if user.is_superuser %}
+                        <th>Action</th>
+                        {% endif %}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for user in users %}
+                      <tr class="gradeA">
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.contect }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.address }}</td>
+                        <td>{{ user.password }}</td>
+                        {% if user.is_superuser %}
+                        <td class="center">
+                          <a class="btn btn-denger" href="">Block</a>  
+                        </td>
+                        {% endif %}
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div id="footer" class="span12"> 2020 &copy; <a href=""></a> </div>
+      </div>
+      <script src="{% static '/js/jquery.min.js' %}"></script> 
+      <script src="{% static '/js/jquery.ui.custom.js' %}"></script> 
+      <script src="{% static '/js/bootstrap.min.js' %}"></script> 
+      <script src="{% static '/js/jquery.uniform.js' %}"></script> 
+      <script src="{% static '/js/select2.min.js' %}"></script> 
+      <script src="{% static '/js/jquery.dataTables.min.js' %}"></script> 
+      <script src="{% static '/js/matrix.js' %}"></script> 
+      <script src="{% static '/js/matrix.tables.js' %}"></script>    
+{% endblock %}

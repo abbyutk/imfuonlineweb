@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body_block %}
+    {% include 'nav.html' %}
+    {% include 'side.html' %}
+    <div id="content">
+        <div id="content-header">
+          <div id="breadcrumb"> <a href="{% url 'imfu_online:home' %}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{% url 'imfu_online:subadmin' %}" class="tip-bottom">Sub Admin</a> <a href="#" class="current">Update Sub Admin</a> </div>
+          <h1>Update Sub Admin</h1>
+        </div>
+        <div class="container-fluid">
+          <hr>
+          <div class="row-fluid">
+            <div class="span12">
+              <div class="widget-box">
+                <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+                  <h5>Sub Admin</h5>
+                </div>
+                <div class="widget-content nopadding">
+                  <form action="" method="POST" class="form-horizontal">
+                    {% csrf_token %}
+                    <div class="control-group">
+                      <label class="control-label">Username :</label>
+                      <div class="controls">
+                        <input type="text" name="username" id="" class="span11" value="{{ subadmin.user.username }}" >
+                      </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Name :</label>
+                        <div class="controls">
+                          <input type="text" name="name" id="" class="span11" value="{{ subadmin.user.first_name }}" >
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Email :</label>
+                        <div class="controls">
+                          <input type="email" name="email" id="" class="span11" value="{{ subadmin.user.email }}" >
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Password :</label>
+                        <div class="controls">
+                          <input type="password" name="password" id="" class="span11" value="{{ subadmin.user.password }}" >
+                        </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label">Contect Number :</label>
+                      <div class="controls">
+                        <input class="span11" type="tel" name="contect" placeholder="Contect Number" value="{{ subadmin.contect }}" >
+                      </div>
+                    </div>
+                    <input type="hidden" name="country" id="countryId" value="IN"/>
+                    <div class="control-group">
+                      <label class="control-label">State :</label>
+                      <div class="controls">
+                        <select class="span11" id="listBox" name="state" onchange='selct_district(this.value)' required>
+                          <option value="{{ subadmin.state }}">{{ subadmin.state }}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label">City :</label>
+                      <div class="controls">
+                        <select class="span11" id='secondlist' name="city" required>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-actions">
+                      <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+      <div class="row-fluid">
+        <div id="footer" class="span12"> 2020 &copy;<a href=""></a> </div>
+      </div>
+      <script src="{% static '/js/jquery.min.js' %}"></script> 
+      <script src="{% static '/js/jquery.ui.custom.js' %}"></script> 
+      <script src="{% static '/js/bootstrap.min.js' %}"></script> 
+      <script src="{% static '/js/jquery.uniform.js' %}"></script> 
+      <script src="{% static '/js/select2.min.js' %}"></script> 
+      <script src="{% static '/js/jquery.dataTables.min.js' %}"></script> 
+      <script src="{% static '/js/matrix.js' %}"></script> 
+      <script src="{% static '/js/matrix.tables.js' %}"></script>    
+{% endblock %}
